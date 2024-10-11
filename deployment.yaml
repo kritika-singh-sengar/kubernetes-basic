@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: teacher-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: teacher-app
+  template:
+    metadata:     
+      name: teacher-pod
+      labels:
+        app: teacher-app
+    spec:
+      containers:
+      - name: teacher
+        image: kritikasingh02/teacher:v1
+        ports: 
+        - containerPort: 8084
